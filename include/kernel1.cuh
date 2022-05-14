@@ -9,8 +9,8 @@ void mysgemm_v1(int M, int N, int K, float alpha, float* A, float* B, float beta
     int lda = M, ldb = K, ldc = M;
     int tx = threadIdx.x, ty = threadIdx.y;
     int bx = blockIdx.x, by = blockIdx.y;
-    A = &A((bx<<5),0);
-    B = &B(0,(by<<5));
+    A = &A((bx<<5),0);//blockDim.x==32
+    B = &B(0,(by<<5));//blockDim.y==32
     C = &C((bx<<5),(by<<5));
     float tmp=0.;
     for (int k_count = 0; k_count<K; k_count++){

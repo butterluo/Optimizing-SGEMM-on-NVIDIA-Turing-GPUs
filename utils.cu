@@ -59,8 +59,6 @@ void copy_matrix(FLOAT *src, FLOAT *dest, int n){
     if (i != n) printf("copy failed at %d while there are %d elements in total.\n", i, n);
 }
 
-
-
 void test_cublas(cublasHandle_t err, INT M, INT N, INT K, FLOAT alpha, FLOAT *A, FLOAT *B, FLOAT beta, FLOAT *C){
     cudaDeviceSynchronize();
     cublasSgemm(err, CUBLAS_OP_N, CUBLAS_OP_N, M, N, K, &alpha, A, M, B, K, &beta, C, M);
